@@ -1,0 +1,42 @@
+Quando se deseja filtrar vários dados em uma mesma coluna, cuja lógica é OR, deve-se repetir várias vezes a escrita do OR.
+
+SELECT *
+	FROM venda
+	WHERE codigo_produto = '10001'
+		OR codigo_produto = '10008'
+		OR codigo_produto = '10014'
+
+  Para simplificar esta escrita repetitiva do OR, utiliza-se o IN :
+
+SELECT *
+	FROM venda
+	WHERE codigo_produto IN ('10001', '10008', '10014')
+
+Pode-se colocar o NOT IN:
+SELECT *
+	FROM venda
+	WHERE codigo_produto NOT IN ('10001', '10008', '10014')
+
+-------------
+BETWEEN
+
+  Pode-se filtrar apenas uma data específica;
+SELECT *
+	FROM venda
+	WHERE dt_entrega = '2018-09-25'
+
+  Pode-se filtrar entre duas datas específicas; Quer dizer que utilizamos valores mínimos e máximos.
+
+  SELECT *
+	FROM venda
+	WHERE dt_venda BETWEEN '2018-09-25' AND '2019-09-15'
+
+
+  Pode-se adicionar quantos filtros desejar:
+
+SELECT *
+	FROM venda
+	WHERE dt_venda BETWEEN '2018-09-25' AND '2019-09-15'
+		AND codigo_loja = 'CL001'
+
+  
